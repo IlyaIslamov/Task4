@@ -1,19 +1,25 @@
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
     public static void main(String[] args) {
 
         List<Client> arrayList = new  ArrayList<>();
-        arrayList.add(new Client("Nick", new Date()));
-        arrayList.add(new Client("Gim", new Date()));
-        arrayList.add(new Client("Billy", new Date()));
-        arrayList.add(new Client("Van", new Date()));
-        arrayList.add(new Client("Sam", new Date()));
-        arrayList.add(new Client("Semen", new Date()));
+        arrayList.add(new Client("Nick", new Date(randomDate())));
+        arrayList.add(new Client("Gim", new Date(randomDate())));
+        arrayList.add(new Client("Billy", new Date(randomDate())));
+        arrayList.add(new Client("Van", new Date(randomDate())));
+        arrayList.add(new Client("Sam", new Date(randomDate())));
+        arrayList.add(new Client("Semen", new Date(randomDate())));
         System.out.println(arrayList);
         Collections.sort(arrayList);
         System.out.println(arrayList);
+    }
+    public static long randomDate(){
+        Date startDate = new Date(1);
+        Date endDate = new Date();
+        return ThreadLocalRandom.current().nextLong(startDate.getTime(),endDate.getTime());
     }
 }
 class Client implements Comparable<Client>{
